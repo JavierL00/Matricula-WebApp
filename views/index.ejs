@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gestor de Matriculas</title>
+    <link rel="stylesheet" href="resources/css/skeleton.css">
+    <link rel="stylesheet" href="resources/css/style.css">
+</head>
+<body onLoad="myOnLoad()" class="background">
+
+<% if (login === false) { %>
+    <div id="main">
+        <h1>Debe iniciar sesion</h1>
+        <a href="/login" class="btn-login">Login</a>
+    </div>
+<% } else { %>
+    <div id="main">
+        <h1>Bienvenido, <strong>Sr(a). <%= name %></strong></h1>
+
+        <h1>Gestor de Matriculas</h1>
+        <div class="contenedor-main">
+            <form id="buscador">
+                <div class="options-container">
+                    <div class="row">
+                        <div class="four columns">
+                            <label for="nivel">Nivel</label>
+                            <select name="nivel" class="u-full-width" id="nivel">
+                                <option value="">Seleccione</option>
+                            </select>
+                        </div>
+                        <div class="four columns">
+                            <label for="grado">Grado</label>
+                            <select name="grado" class="u-full-width" id="grado">
+                                <option value="">Seleccione</option>
+                            </select>
+                        </div>
+                        <div class="four columns">
+                            <label for="seccion">Seccion</label>
+                            <select name="seccion" class="u-full-width" id="seccion">
+                                <option value="">Seleccione</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="four columns">
+                            <label for="dni" class="form-label">DNI</label>
+                            <input type="text" class="form-control" id="dni" placeholder="12345678">
+                        </div>
+                        <div class="four columns">
+                            <label for="nombres" class="form-label">Nombres</label>
+                            <input type="text" class="form-control" id="nombres">
+                        </div>
+                        <div class="four columns">
+                            <label for="apellidos" class="form-label">Apellidos</label>
+                            <input type="text" class="form-control" id="apellidos">
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" class="btn-login-matricula" value="Registrar matricula">
+            </form>
+        </div>
+
+        <a href="/login" class="a-logout">Logout</a>
+    </div>
+<% } %>
+
+</body>
+</html>
