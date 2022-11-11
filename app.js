@@ -21,7 +21,7 @@ app.use(session({
   saveUninitialized: true
 }));
 
-const connection = require('./database');
+// const connection = require('./database');
 
 app.get('/login', (req, res) => {
   res.render('login');
