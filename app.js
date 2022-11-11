@@ -5,7 +5,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 const dotenv = require('dotenv');
-dotenv.config({path: './env/.env'});
+dotenv.config({path: './.env'});
 
 app.use('/resources', express.static('public'));
 app.use('/resources', express.static(__dirname + '/public'));
@@ -21,7 +21,7 @@ app.use(session({
   saveUninitialized: true
 }));
 
-const connection = require('./database/db');
+const connection = require('./database');
 
 app.get('/login', (req, res) => {
   res.render('login');
@@ -62,7 +62,7 @@ app.post('/register', async (req, res) => {
 app.post('/auth', async (req, res) => {
   const user = req.body.user;
   const pass = req.body.pass;
-  if (user && pass) {
+  /*if (user && pass) {
     connection.query('SELECT * FROM users WHERE user = ?', [user], async (error, results) => {
       if (results.length === 0 || !(await bcrypt.compare(pass, results[0].pass))) {
         res.render('login', {
@@ -99,7 +99,17 @@ app.post('/auth', async (req, res) => {
       timer: false,
       ruta: 'login'
     });
-  }
+  }*/
+  req.session.loggedin = true;
+  res.render('login', {
+    alert: true,
+    alertTitle: "Login",
+    alertMessage: "¡Logeado con exito!",
+    alertIcon: 'success',
+    showConfirmButton: false,
+    timer: 1500,
+    ruta: ''
+  });
 })
 
 app.get('/', (req, res) => {
